@@ -487,7 +487,7 @@ $listen = [
 
 ## Authors
 
-* **rennokki** - *Initial work* - [rennokki](https://github.com/rennokki)
+* **Georgescu Alexandru** - *Initial work* - [rennokki](https://github.com/rennokki)
 * **Musa Kurt** - *Laravel 5.8 Support* - [whthT](https://github.com/whtht)
 
 See also the list of [contributors](https://github.com/rennokki/plans/graphs/contributors) who participated in this project.
