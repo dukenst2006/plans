@@ -66,7 +66,7 @@ class CreatePlansTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('plan_usages', function (Blueprint $table) {
+        Schema::create('plan_subscription_usages', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('subscription_id');
 
@@ -98,7 +98,7 @@ class CreatePlansTable extends Migration
         Schema::dropIfExists('plans');
         Schema::dropIfExists('plan_features');
         Schema::dropIfExists('plan_subscriptions');
-        Schema::dropIfExists('plan_usages');
+        Schema::dropIfExists('plan_subscription_usages');
         Schema::dropIfExists('stripe_customers');
     }
 }
