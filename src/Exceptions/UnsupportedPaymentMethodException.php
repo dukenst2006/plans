@@ -6,4 +6,5 @@ use Exception;
 
 class UnsupportedPaymentMethodException extends Exception
 {
+    protected $message = null;
 }
