@@ -18,7 +18,7 @@ class PlansServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/../database/migrations' => database_path(),
+            __DIR__.'/../database/migrations' => database_path('migrations'),
         ], 'migration');
     }
 
