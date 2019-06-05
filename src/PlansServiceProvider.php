@@ -18,8 +18,7 @@ class PlansServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/../database/migrations/2018_06_07_123211_plans.php' => database_path('migrations/2018_06_07_123211_plans.php'),
-            __DIR__.'/../database/migrations/2019_06_07_123211_plans_metadata.php' => database_path('migrations/2019_06_07_123211_plans_metadata.php'),
+            __DIR__.'/../database/migrations' => database_path()
         ], 'migration');
     }
 
