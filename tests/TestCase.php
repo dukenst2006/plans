@@ -6,7 +6,6 @@ use Stripe\Stripe;
 use Stripe\Token as StripeToken;
 use Rennokki\Plans\Models\PlanModel;
 use Rennokki\Plans\Test\Models\User;
-use Symfony\Component\Dotenv\Dotenv;
 use Rennokki\Plans\Models\PlanFeatureModel;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Rennokki\Plans\Models\StripeCustomerModel;
@@ -19,9 +18,6 @@ abstract class TestCase extends Orchestra
 
     public function setUp(): void
     {
-        $dotenv = new Dotenv();
-        $dotenv->load(__DIR__.'/../.env');
-
         parent::setUp();
 
         $this->resetDatabase();

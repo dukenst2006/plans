@@ -27,5 +27,6 @@
         <env name="CACHE_DRIVER" value="array"/>
         <env name="MAIL_DRIVER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="STRIPE_SECRET" value="YOUR_STRIPE_SECRET"/>
     </php>
 </phpunit>
