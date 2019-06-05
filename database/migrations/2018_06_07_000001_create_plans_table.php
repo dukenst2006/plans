@@ -50,7 +50,7 @@ class CreatePlansTable extends Migration
             $table->integer('model_id');
             $table->string('model_type');
 
-            $table->enum('payment_method', config('plans.payment_methods', ['stripe']))->nullable()->default(null);
+            $table->string('payment_method')->nullable()->default(null);
             $table->boolean('is_paid')->default(false);
 
             $table->float('charging_price', 8, 2)->nullable();

@@ -4,11 +4,13 @@ namespace Rennokki\Plans\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Rennokki\Plans\Exceptions\UnsupportedPaymentMethodException;
 
 class PlanSubscriptionModel extends Model
 {
-    protected $table = 'plans_subscriptions';
+    protected $table = 'plan_subscriptions';
     protected $guarded = [];
+    protected $fillable = ['plan_id', 'model_id', 'model_type', 'payment_method', 'is_paid', 'charging_price', 'charging_currency', 'is_recurring', 'recurring_each_days', 'starts_on', 'expires_on', 'cancelled_on'];
     protected $dates = [
         'starts_on',
         'expires_on',
@@ -269,5 +271,21 @@ class PlanSubscriptionModel extends Model
         }
 
         return (float) ($feature->isUnlimited()) ? -1 : ($feature->limit - $usage->used);
+    }
+
+    /**
+     * @param $value Payment Method
+     * Supported payment methods in the plans.payment_methods array
+     * If we need add a new payment method, just append the array and use all system.
+     */
+    public function setPaymentMethodAttribute ($value) {
+        if (!is_null($value)) {
+            $supportedPaymentMethods = config('plans.payment_methods', ['stripe']);
+            if (!in_array($value, $supportedPaymentMethods)) {
+                throw new UnsupportedPaymentMethodException(sprintf('The payment method (%s) does not supported. Supported payment methods: %s', $value, implode(', ', $supportedPaymentMethods)));
+            }
+        } else {
+            $this->attributes['payment_method'] = $value;
+        }
     }
 }
