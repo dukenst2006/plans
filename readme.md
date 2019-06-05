@@ -33,7 +33,7 @@ Rennokki\Plans\PlansServiceProvider::class,
 
 Publish the config file & migration files:
 ```bash
-$ php artisan vendor:publish
+$ php artisan vendor:publish --provider="Rennokki\\Plans\\PlansServiceProvider"
 ```
 
 Migrate the database:
@@ -344,6 +344,62 @@ $user->withStripe()->withStripeToken('tok_...')->chargeForLastDueSubscription();
 
 For this method, `\Rennokki\Plans\Events\Stripe\DueSubscriptionChargeSuccess` and `\Rennokki\Plans\Events\Stripe\DueSubscriptionChargeFailed` are thrown on succesful charge or failed charge.
 
+# Model Extends
+
+You can extend Plan models as well
+
+**note** `$table`, `$fillable`, `$cast`, `Relationships` will be inherit
+
+## PlanModel
+```php
+<?php
+namespace App\Models;
+use Rennokki\Plans\Models\PlanModel;
+class Plan extends PlanModel {
+    //
+}
+```
+
+## PlanFeatureModel
+```php
+<?php
+namespace App\Models;
+use Rennokki\Plans\Models\PlanFeatureModel;
+class PlanFeature extends PlanFeatureModel {
+    //
+}
+```
+
+## PlanSubscriptionModel
+```php
+<?php
+namespace App\Models;
+use Rennokki\Plans\Models\PlanSubscriptionModel;
+class PlanSubscription extends PlanSubscriptionModel {
+    //
+}
+```
+
+## PlanSubscriptionUsageModel
+```php
+<?php
+namespace App\Models;
+use Rennokki\Plans\Models\PlanSubscriptionUsageModel;
+class PlanSubscriptionUsage extends PlanSubscriptionUsageModel {
+    //
+}
+```
+
+## StripteCustomerModel
+```php
+<?php
+namespace App\Models;
+use Rennokki\Plans\Models\StripteCustomerModel;
+class StripeCustomer extends StripteCustomerModel {
+    //
+}
+```
+
 # Events
 When using subscription plans, you want to listen for events to automatically run code that might do changes for your app.
 
@@ -428,3 +484,14 @@ $listen = [
     ],
 ];
 ```
+
+## Authors
+
+* **rennokki** - *Initial work* - [rennokki](https://github.com/rennokki)
+* **Musa Kurt** - *Laravel 5.8 Support* - [whthT](https://github.com/whtht)
+
+See also the list of [contributors](https://github.com/rennokki/plans/graphs/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
