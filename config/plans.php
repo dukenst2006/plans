@@ -16,7 +16,7 @@ return [
         'stripeCustomer' => \Rennokki\Plans\Models\StripeCustomerModel::class,
 
     ],
-    /**
+    /*
      * Payment methods
      */
     'payment_methods' => ['stripe'],
