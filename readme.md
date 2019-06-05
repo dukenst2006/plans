@@ -33,7 +33,7 @@ Rennokki\Plans\PlansServiceProvider::class,
 
 Publish the config file & migration files:
 ```bash
-$ php artisan vendor:publish --provider="Rennokki\\Plans\\PlansServiceProvider"
+$ php artisan vendor:publish --provider=Rennokki\Plans\PlansServiceProvider
 ```
 
 Migrate the database:
