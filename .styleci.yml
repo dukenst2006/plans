@@ -1,8 +1,10 @@
-preset: laravel
-
-risky: false
-
-enabled:
-  - long_array_syntax
-  - strict
-  - unalign_double_arrow
+preset: recommended
+risky: true
+finder:
+  exclude:
+    - modules
+    - node_modules
+    - storage
+    - vendor
+  name: "*.php"
+  not-name: "*.blade.php"
