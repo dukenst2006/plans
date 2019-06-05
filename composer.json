@@ -22,12 +22,14 @@
     ],
     "require": {
         "doctrine/dbal": "^2.8.0",
-        "stripe/stripe-php": "^6.11.0"
+        "stripe/stripe-php": "^6.11.0",
+        "laravel/framework": "~5.5.0|~5.6.0|~5.7.0|~5.8.0"
     },
     "require-dev": {
+        "orchestra/database": "~3.5.0|~3.6.0|~3.7.0|~3.8.0",
+        "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0|~3.8.0",
         "phpunit/phpunit": "^6.2|^7.0",
-        "orchestra/testbench": "~3.5.0|~3.6.0",
-        "orchestra/database": "~3.5.0|~3.6.0"
+        "symfony/dotenv": "^5.0@dev"
     },
     "autoload": {
         "psr-4": {
@@ -40,7 +42,12 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "test": "phpunit",
+        "test:basic": "phpunit --group basic",
+        "test:stripe": "phpunit --group stripe",
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
     },
     "extra": {
         "laravel": {

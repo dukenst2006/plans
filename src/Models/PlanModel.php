@@ -8,6 +8,7 @@ class PlanModel extends Model
 {
     protected $table = 'plans';
     protected $guarded = [];
+    protected $fillable = ['name', 'description', 'price', 'currency', 'duration', 'metadata'];
     protected $casts = [
         'metadata' => 'object',
     ];

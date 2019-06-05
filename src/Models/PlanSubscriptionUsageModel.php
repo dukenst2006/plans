@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class PlanSubscriptionUsageModel extends Model
 {
-    protected $table = 'plans_usages';
+    protected $table = 'plan_usages';
     protected $guarded = [];
+    protected $fillable = ['subscription_id', 'code', 'used'];
 
     public function subscription()
     {

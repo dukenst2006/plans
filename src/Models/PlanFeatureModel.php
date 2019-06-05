@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class PlanFeatureModel extends Model
 {
-    protected $table = 'plans_features';
+    protected $table = 'plan_features';
     protected $guarded = [];
+    protected $fillable = ['plan_id', 'name', 'code', 'description', 'type', 'limit', 'metadata'];
     protected $casts = [
         'metadata' => 'object',
     ];

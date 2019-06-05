@@ -8,6 +8,7 @@ class StripeCustomerModel extends Model
 {
     protected $table = 'stripe_customers';
     protected $guarded = [];
+    protected $fillable = ['model_id', 'model_type', 'customer_id'];
     protected $dates = [
         //
     ];
