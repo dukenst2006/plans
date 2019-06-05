@@ -10,7 +10,7 @@ class RecurrencyTest extends TestCase
     protected $plan;
     protected $newPlan;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -21,6 +21,9 @@ class RecurrencyTest extends TestCase
         $this->initiateStripeAPI();
     }
 
+    /**
+    * @group stripe
+    */
     public function testRecurrency()
     {
         $this->user->subscribeToUntil($this->plan, Carbon::now()->addDays(7));
@@ -41,6 +44,9 @@ class RecurrencyTest extends TestCase
         $this->assertEquals($this->user->subscriptions()->count(), 2);
     }
 
+    /**
+    * @group stripe
+    */
     public function testRecurrencyWithStripe()
     {
         $this->user->withStripe()->withStripeToken($this->getStripeTestToken())->subscribeToUntil($this->plan, Carbon::now()->addDays(7));

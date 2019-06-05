@@ -9,14 +9,16 @@ class FeatureTest extends TestCase
     protected $user;
     protected $plan;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->user = factory(\Rennokki\Plans\Test\Models\User::class)->create();
         $this->plan = factory(\Rennokki\Plans\Models\PlanModel::class)->create();
     }
-
+    /**
+    * @group basic
+    */
     public function testConsumeFeature()
     {
         $subscription = $this->user->subscribeTo($this->plan, 30);
@@ -76,7 +78,10 @@ class FeatureTest extends TestCase
         $this->assertNull($subscription->getUsageOf('build.hours'));
         $this->assertEquals($subscription->getRemainingOf('build.hours'), 0);
     }
-
+    
+    /**
+    * @group basic
+    */
     public function testUnconsumeFeature()
     {
         $subscription = $this->user->subscribeTo($this->plan, 30);

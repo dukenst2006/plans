@@ -6,18 +6,20 @@ use Rennokki\Plans\Helpers\StripeHelper;
 
 class StripeHelperTest extends TestCase
 {
-    public function setUp()
-    {
-        parent::setUp();
-    }
 
+    /**
+    * @group stripe
+    */
     public function testIsZeroDecimalCurency()
     {
         foreach (StripeHelper::$stripeZeroDecimalCurrencies as $currency) {
             $this->assertTrue(StripeHelper::isZeroDecimalCurrency($currency));
         }
     }
-
+    
+    /**
+    * @group stripe
+    */
     public function testFromStripeToReal()
     {
         foreach (StripeHelper::$stripeZeroDecimalCurrencies as $currency) {
@@ -29,7 +31,10 @@ class StripeHelperTest extends TestCase
         $this->assertEquals(StripeHelper::fromStripeAmountToreal(123, 'USD'), 1.23);
         $this->assertEquals(StripeHelper::fromStripeAmountToreal(123, 'EUR'), 1.23);
     }
-
+    
+    /**
+    * @group stripe
+    */
     public function testFromRealToStripe()
     {
         foreach (StripeHelper::$stripeZeroDecimalCurrencies as $currency) {

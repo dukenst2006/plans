@@ -11,13 +11,18 @@ use Orchestra\Testbench\TestCase as Orchestra;
 use Rennokki\Plans\Models\StripeCustomerModel;
 use Rennokki\Plans\Models\PlanSubscriptionModel;
 use Rennokki\Plans\Models\PlanSubscriptionUsageModel;
+use Symfony\Component\Dotenv\Dotenv;
 
 abstract class TestCase extends Orchestra
 {
     protected $invalidStripeToken = 'tok_chargeDeclinedInsufficientFunds';
 
-    public function setUp()
+    public function setUp(): void
     {
+
+        $dotenv = new Dotenv();
+        $dotenv->load(__DIR__.'/../.env');
+
         parent::setUp();
 
         $this->resetDatabase();
@@ -60,7 +65,7 @@ abstract class TestCase extends Orchestra
 
     protected function initiateStripeAPI()
     {
-        return Stripe::setApiKey(getenv('STRIPE_SECRET'));
+        return Stripe::setApiKey($_ENV['STRIPE_SECRET']);
     }
 
     protected function getStripeTestToken()
