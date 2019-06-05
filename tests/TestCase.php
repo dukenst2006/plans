@@ -6,12 +6,12 @@ use Stripe\Stripe;
 use Stripe\Token as StripeToken;
 use Rennokki\Plans\Models\PlanModel;
 use Rennokki\Plans\Test\Models\User;
+use Symfony\Component\Dotenv\Dotenv;
 use Rennokki\Plans\Models\PlanFeatureModel;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Rennokki\Plans\Models\StripeCustomerModel;
 use Rennokki\Plans\Models\PlanSubscriptionModel;
 use Rennokki\Plans\Models\PlanSubscriptionUsageModel;
-use Symfony\Component\Dotenv\Dotenv;
 
 abstract class TestCase extends Orchestra
 {

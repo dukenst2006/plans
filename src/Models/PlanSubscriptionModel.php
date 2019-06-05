@@ -278,10 +278,11 @@ class PlanSubscriptionModel extends Model
      * Supported payment methods in the plans.payment_methods array
      * If we need add a new payment method, just append the array and use all system.
      */
-    public function setPaymentMethodAttribute ($value) {
-        if (!is_null($value)) {
+    public function setPaymentMethodAttribute ($value)
+    {
+        if (! is_null($value)) {
             $supportedPaymentMethods = config('plans.payment_methods', ['stripe']);
-            if (!in_array($value, $supportedPaymentMethods)) {
+            if (! in_array($value, $supportedPaymentMethods)) {
                 throw new UnsupportedPaymentMethodException(sprintf('The payment method (%s) does not supported. Supported payment methods: %s', $value, implode(', ', $supportedPaymentMethods)));
             }
         } else {

@@ -17,8 +17,8 @@ class FeatureTest extends TestCase
         $this->plan = factory(\Rennokki\Plans\Models\PlanModel::class)->create();
     }
     /**
-    * @group basic
-    */
+     * @group basic
+     */
     public function testConsumeFeature()
     {
         $subscription = $this->user->subscribeTo($this->plan, 30);
@@ -80,8 +80,8 @@ class FeatureTest extends TestCase
     }
     
     /**
-    * @group basic
-    */
+     * @group basic
+     */
     public function testUnconsumeFeature()
     {
         $subscription = $this->user->subscribeTo($this->plan, 30);

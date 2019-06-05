@@ -22,8 +22,8 @@ class RecurrencyTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testRecurrency()
     {
         $this->user->subscribeToUntil($this->plan, Carbon::now()->addDays(7));
@@ -45,8 +45,8 @@ class RecurrencyTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testRecurrencyWithStripe()
     {
         $this->user->withStripe()->withStripeToken($this->getStripeTestToken())->subscribeToUntil($this->plan, Carbon::now()->addDays(7));

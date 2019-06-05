@@ -19,6 +19,6 @@ return [
     /**
      * Payment methods
      */
-    'payment_methods' => ['stripe']
+    'payment_methods' => ['stripe'],
 
 ];

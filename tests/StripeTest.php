@@ -22,8 +22,8 @@ class StripeTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testStripeCustomer()
     {
         $this->assertFalse($this->user->isStripeCustomer());
@@ -38,8 +38,8 @@ class StripeTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testChargeOnSubscribeTo()
     {
         $customer = $this->user->createStripeCustomer();
@@ -54,8 +54,8 @@ class StripeTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testChargeOnSubscribeToWithInvalidToken()
     {
         $customer = $this->user->createStripeCustomer();
@@ -71,8 +71,8 @@ class StripeTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testChargeOnSubscribeToUntil()
     {
         $subscription = $this->user->withStripe()->withStripeToken($this->getStripeTestToken())->subscribeToUntil($this->plan, Carbon::now()->addDays(53));
@@ -85,8 +85,8 @@ class StripeTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testChargeOnSubscribeToUntilWithInvalidToken()
     {
         $subscription = $this->user->withStripe()->withStripeToken($this->getInvalidStripeToken())->subscribeToUntil($this->plan, Carbon::now()->addDays(53));
@@ -100,8 +100,8 @@ class StripeTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testChargeOnSubscribeToWithDifferentPrice()
     {
         $customer = $this->user->createStripeCustomer();
@@ -116,8 +116,8 @@ class StripeTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testChargeOnSubscribeToWithDifferentPriceAndInvalidToken()
     {
         $customer = $this->user->createStripeCustomer();
@@ -133,8 +133,8 @@ class StripeTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testChargeOnSubscribeToUntilWithDifferentPrice()
     {
         $subscription = $this->user->withStripe()->setChargingPriceTo(100, 'JPY')->withStripeToken($this->getStripeTestToken())->subscribeToUntil($this->plan, Carbon::now()->addDays(53));
@@ -148,8 +148,8 @@ class StripeTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testChargeOnSubscribeToUntilWithDifferentPriceAndInvalidStripeToken()
     {
         $subscription = $this->user->withStripe()->withStripeToken($this->getInvalidStripeToken())->setChargingPriceTo(100, 'JPY')->subscribeToUntil($this->plan, Carbon::now()->addDays(53));
@@ -164,8 +164,8 @@ class StripeTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testChargeForLastDueSubscriptionWithStripe()
     {
         $subscription = $this->user->withStripe()->withStripeToken($this->getInvalidStripeToken())->subscribeTo($this->plan, 53);
@@ -189,8 +189,8 @@ class StripeTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testChargeForLastDueSubscriptionWithInvalidStripeToken()
     {
         $subscription = $this->user->withStripe()->withStripeToken($this->getInvalidStripeToken())->subscribeTo($this->plan, 53);
@@ -209,8 +209,8 @@ class StripeTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testSubscribeWhenHavingDueSubscription()
     {
         $subscription = $this->user->withStripe()->withStripeToken($this->getInvalidStripeToken())->subscribeTo($this->plan, 53);
@@ -236,8 +236,8 @@ class StripeTest extends TestCase
     }
 
     /**
-    * @group stripe
-    */
+     * @group stripe
+     */
     public function testSubscribeUntilWhenHavingDueSubscription()
     {
         $subscription = $this->user->withStripe()->withStripeToken($this->getInvalidStripeToken())->subscribeToUntil($this->plan, Carbon::now()->addDays(53));
