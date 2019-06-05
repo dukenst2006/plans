@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Plans extends Migration
+class CreatePlansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -23,11 +23,12 @@ class Plans extends Migration
             $table->string('currency');
 
             $table->integer('duration')->default(30);
+            $table->mediumText('metadata')->nullable();
 
             $table->timestamps();
         });
 
-        Schema::create('plans_features', function (Blueprint $table) {
+        Schema::create('plan_features', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('plan_id');
 
@@ -37,18 +38,19 @@ class Plans extends Migration
 
             $table->enum('type', ['feature', 'limit'])->default('feature');
             $table->integer('limit')->default(0);
+            $table->mediumText('metadata')->nullable();
 
             $table->timestamps();
         });
 
-        Schema::create('plans_subscriptions', function (Blueprint $table) {
+        Schema::create('plan_subscriptions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('plan_id');
 
             $table->integer('model_id');
             $table->string('model_type');
 
-            $table->enum('payment_method', ['stripe'])->nullable()->default(null);
+            $table->enum('payment_method', config('plans.payment_methods', ['stripe']))->nullable()->default(null);
             $table->boolean('is_paid')->default(false);
 
             $table->float('charging_price', 8, 2)->nullable();
@@ -64,7 +66,7 @@ class Plans extends Migration
             $table->timestamps();
         });
 
-        Schema::create('plans_usages', function (Blueprint $table) {
+        Schema::create('plan_usages', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('subscription_id');
 
@@ -94,9 +96,9 @@ class Plans extends Migration
     public function down()
     {
         Schema::dropIfExists('plans');
-        Schema::dropIfExists('plans_features');
-        Schema::dropIfExists('plans_subscriptions');
-        Schema::dropIfExists('plans_usages');
+        Schema::dropIfExists('plan_features');
+        Schema::dropIfExists('plan_subscriptions');
+        Schema::dropIfExists('plan_usages');
         Schema::dropIfExists('stripe_customers');
     }
 }
