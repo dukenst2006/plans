@@ -63,7 +63,7 @@ class PlanTest extends TestCase
         $this->assertEquals($this->user->subscriptions()->recurring()->count(), 1);
         $this->assertEquals($this->user->subscriptions()->cancelled()->count(), 0);
         $this->assertNotNull($this->user->activeSubscription());
-        
+
         $this->assertNotNull($this->user->lastActiveSubscription());
         $this->assertTrue($this->user->hasActiveSubscription());
         $this->assertEquals($subscription->remainingDays(), 14);

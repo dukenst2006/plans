@@ -6,7 +6,6 @@ use Rennokki\Plans\Helpers\StripeHelper;
 
 class StripeHelperTest extends TestCase
 {
-
     /**
      * @group stripe
      */
@@ -16,7 +15,7 @@ class StripeHelperTest extends TestCase
             $this->assertTrue(StripeHelper::isZeroDecimalCurrency($currency));
         }
     }
-    
+
     /**
      * @group stripe
      */

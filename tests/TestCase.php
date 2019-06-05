@@ -19,7 +19,6 @@ abstract class TestCase extends Orchestra
 
     public function setUp(): void
     {
-
         $dotenv = new Dotenv();
         $dotenv->load(__DIR__.'/../.env');
 

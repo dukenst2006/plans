@@ -16,6 +16,7 @@ class FeatureTest extends TestCase
         $this->user = factory(\Rennokki\Plans\Test\Models\User::class)->create();
         $this->plan = factory(\Rennokki\Plans\Models\PlanModel::class)->create();
     }
+
     /**
      * @group basic
      */
@@ -78,7 +79,6 @@ class FeatureTest extends TestCase
         $this->assertNull($subscription->getUsageOf('build.hours'));
         $this->assertEquals($subscription->getRemainingOf('build.hours'), 0);
     }
-    
     /**
      * @group basic
      */
