@@ -79,6 +79,7 @@ class FeatureTest extends TestCase
         $this->assertNull($subscription->getUsageOf('build.hours'));
         $this->assertEquals($subscription->getRemainingOf('build.hours'), 0);
     }
+
     /**
      * @group basic
      */

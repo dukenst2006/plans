@@ -30,7 +30,7 @@ class StripeHelperTest extends TestCase
         $this->assertEquals(StripeHelper::fromStripeAmountToreal(123, 'USD'), 1.23);
         $this->assertEquals(StripeHelper::fromStripeAmountToreal(123, 'EUR'), 1.23);
     }
-    
+
     /**
      * @group stripe
      */
